@@ -1,0 +1,7 @@
+com\icicibank\apimgmt\service\DBOpsservice.class
+com\icicibank\apimgmt\controller\DBOpsApiController.class
+com\icicibank\apimgmt\service\impl\DBOpsServiceImpl.class
+com\icicibank\apimgmt\ServletInitializer.class
+com\icicibank\apimgmt\dao\DBOpsRepository.class
+com\icicibank\apimgmt\DbAsynchronusOperationsApplication.class
+com\icicibank\apimgmt\model\Record.class
