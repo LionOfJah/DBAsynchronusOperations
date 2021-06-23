@@ -1,6 +1,8 @@
 package com.icicibank.apimgmt.model;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,229 +11,292 @@ import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Component 
 @Entity
-@Table(name="COMPOSITE_MIS_TBL ")
+@Table(name="COMPOSITE_MIS_TBL")
 public class Record implements Serializable
 {
-	@JsonProperty(value="RETAILER_CODE")
-	@Column(name="RETAILER_CODE")
-   private String RETAILER_CODE;
-
-	@JsonProperty(value="TRANSACTION_REF")
-	@Column(name="TRANSACTION_REF")
-   private String TRANSACTION_REF;
-
-	@JsonProperty(value="REM_NAME")
-	@Column(name="REM_NAME")
-   private String REM_NAME;
-
-	@JsonProperty(value="PAYERVA")
-	@Column(name="PAYERVA")
-   private String PAYERVA;
-
-	@JsonProperty(value="REM_MOBILE")
-	@Column(name="REM_MOBILE")
-   private String REM_MOBILE;
-
-	@JsonProperty(value="SUBMERCHANTNAME")
-	@Column(name="SUBMERCHANTNAME")
-   private String SUBMERCHANTNAME;
-
-	@JsonProperty(value="SUBMERCHANTID")
-	@Column(name="SUBMERCHANTID")
-   private String SUBMERCHANTID;
-
-	@JsonProperty(value="BEN_ACCOUNT")
-	@Column(name="BEN_ACCOUNT")
-   private String BEN_ACCOUNT;
-
-	@JsonProperty(value="BEN_BANK_IFSC")
+	@JsonProperty("BEN_BANK_IFSC")
 	@Column(name="BEN_BANK_IFSC")
-   private String BEN_BANK_IFSC;
-
-	@JsonProperty(value="DATETIME")
+	private String benBankIfsc;
+	
+	@JsonProperty("RESPONSE_CODE")
+	@Column(name="RESPONSE_CODE")
+	private String responseCode;
+	
+	@JsonProperty("RETAILER_CODE")
+	@Column(name="RETAILER_CODE")
+	private String retailerCode;
+	
+	@JsonProperty("DATETIME")
 	@Column(name="DATETIME")
-   private String DATETIME;
-
-	@JsonProperty(value="AMOUNT")
+	private String datetime;
+	
+	@JsonProperty("TRANSACTION_REF")
+	@Column(name="TRANSACTION_REF")
+	private String transactionRef;
+	
+	@JsonProperty("REM_NAME")
+	@Column(name="REM_NAME")
+	private String remName;
+	
+	@JsonProperty("STATUS")
+	@Column(name="STATUS")
+	private String status;
+	
+	@JsonProperty("REM_MOBILE")
+	@Column(name="REM_MOBILE")
+	private String remMobile;
+	
+	@JsonProperty("BEN_ACCOUNT")
+	@Column(name="BEN_ACCOUNT")
+	private String benAccount;
+	
+	@JsonProperty("AMOUNT")
 	@Column(name="AMOUNT")
-   private String AMOUNT;
-
-	@JsonProperty(value="MERCHANTNAME")
-	@Column(name="MERCHANTNAME")
-   private String MERCHANTNAME;
-
-	@JsonProperty(value="REM_ACC")
+	private String amount;
+	
+	@JsonProperty("BANK_RRN")
+	@Column(name="BANK_RRN")
+	private String bankRrn;
+	
+	@JsonProperty("REM_ACC")
 	@Column(name="REM_ACC")
-   private String REM_ACC;
+	private String remAcc;
+	
+	@JsonProperty("MERCHANTNAME")
+	@Column(name="MERCHANTNAME")
+	private String merchantname;
+	
+	@JsonProperty("SUBMERCHANTID")
+	@Column(name="SUBMERCHANTID")
+	private String submerchantid;
+	
+	@JsonProperty("SUBMERCHANTNAME")
+	@Column(name="SUBMERCHANTNAME")
+	private String submerchantname;
+	
+	@JsonProperty("PAYERVA")
+	@Column(name="PAYERVA")
+	private String payerva;
+	
+	@JsonProperty("REMARK")
+	@Column(name="REMARK")
+	private String remark;
+	
+	@Id
+	@JsonProperty("UUID")
+	@Column(name="UUID")
+	private String uuid;
+	
+	@JsonIgnore
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-   @Id
-   @JsonProperty(value="UUID")
-   @Column(name="UUID")
-   private String UUID;
+	@JsonProperty("BEN_BANK_IFSC")
+	public String getBenBankIfsc() {
+	return benBankIfsc;
+	}
 
-   @JsonProperty(value="REMARK")
-   @Column(name="REMARK")
-   private String REMARK;
+	@JsonProperty("BEN_BANK_IFSC")
+	public void setBenBankIfsc(String benBankIfsc) {
+	this.benBankIfsc = benBankIfsc;
+	}
 
-   public String getRETAILER_CODE ()
-   {
-       return RETAILER_CODE;
-   }
+	@JsonProperty("RESPONSE_CODE")
+	public String getResponseCode() {
+	return responseCode;
+	}
 
-   public void setRETAILER_CODE (String RETAILER_CODE)
-   {
-       this.RETAILER_CODE = RETAILER_CODE;
-   }
+	@JsonProperty("RESPONSE_CODE")
+	public void setResponseCode(String responseCode) {
+	this.responseCode = responseCode;
+	}
 
-   public String getTRANSACTION_REF ()
-   {
-       return TRANSACTION_REF;
-   }
+	@JsonProperty("RETAILER_CODE")
+	public String getRetailerCode() {
+	return retailerCode;
+	}
 
-   public void setTRANSACTION_REF (String TRANSACTION_REF)
-   {
-       this.TRANSACTION_REF = TRANSACTION_REF;
-   }
+	@JsonProperty("RETAILER_CODE")
+	public void setRetailerCode(String retailerCode) {
+	this.retailerCode = retailerCode;
+	}
 
-   public String getREM_NAME ()
-   {
-       return REM_NAME;
-   }
+	@JsonProperty("DATETIME")
+	public String getDatetime() {
+	return datetime;
+	}
 
-   public void setREM_NAME (String REM_NAME)
-   {
-       this.REM_NAME = REM_NAME;
-   }
+	@JsonProperty("DATETIME")
+	public void setDatetime(String datetime) {
+	this.datetime = datetime;
+	}
 
-   public String getPAYERVA ()
-   {
-       return PAYERVA;
-   }
+	@JsonProperty("TRANSACTION_REF")
+	public String getTransactionRef() {
+	return transactionRef;
+	}
 
-   public void setPAYERVA (String PAYERVA)
-   {
-       this.PAYERVA = PAYERVA;
-   }
+	@JsonProperty("TRANSACTION_REF")
+	public void setTransactionRef(String transactionRef) {
+	this.transactionRef = transactionRef;
+	}
 
-   public String getREM_MOBILE ()
-   {
-       return REM_MOBILE;
-   }
+	@JsonProperty("REM_NAME")
+	public String getRemName() {
+	return remName;
+	}
 
-   public void setREM_MOBILE (String REM_MOBILE)
-   {
-       this.REM_MOBILE = REM_MOBILE;
-   }
+	@JsonProperty("REM_NAME")
+	public void setRemName(String remName) {
+	this.remName = remName;
+	}
 
-   public String getSUBMERCHANTNAME ()
-   {
-       return SUBMERCHANTNAME;
-   }
+	@JsonProperty("STATUS")
+	public String getStatus() {
+	return status;
+	}
 
-   public void setSUBMERCHANTNAME (String SUBMERCHANTNAME)
-   {
-       this.SUBMERCHANTNAME = SUBMERCHANTNAME;
-   }
+	@JsonProperty("STATUS")
+	public void setStatus(String status) {
+	this.status = status;
+	}
 
-   public String getSUBMERCHANTID ()
-   {
-       return SUBMERCHANTID;
-   }
+	@JsonProperty("REM_MOBILE")
+	public String getRemMobile() {
+	return remMobile;
+	}
 
-   public void setSUBMERCHANTID (String SUBMERCHANTID)
-   {
-       this.SUBMERCHANTID = SUBMERCHANTID;
-   }
+	@JsonProperty("REM_MOBILE")
+	public void setRemMobile(String remMobile) {
+	this.remMobile = remMobile;
+	}
 
-   public String getBEN_ACCOUNT ()
-   {
-       return BEN_ACCOUNT;
-   }
+	@JsonProperty("BEN_ACCOUNT")
+	public String getBenAccount() {
+	return benAccount;
+	}
 
-   public void setBEN_ACCOUNT (String BEN_ACCOUNT)
-   {
-       this.BEN_ACCOUNT = BEN_ACCOUNT;
-   }
+	@JsonProperty("BEN_ACCOUNT")
+	public void setBenAccount(String benAccount) {
+	this.benAccount = benAccount;
+	}
 
-   public String getBEN_BANK_IFSC ()
-   {
-       return BEN_BANK_IFSC;
-   }
+	@JsonProperty("AMOUNT")
+	public String getAmount() {
+	return amount;
+	}
 
-   public void setBEN_BANK_IFSC (String BEN_BANK_IFSC)
-   {
-       this.BEN_BANK_IFSC = BEN_BANK_IFSC;
-   }
+	@JsonProperty("AMOUNT")
+	public void setAmount(String amount) {
+	this.amount = amount;
+	}
 
-   public String getDATETIME ()
-   {
-       return DATETIME;
-   }
+	@JsonProperty("BANK_RRN")
+	public String getBankRrn() {
+	return bankRrn;
+	}
 
-   public void setDATETIME (String DATETIME)
-   {
-       this.DATETIME = DATETIME;
-   }
+	@JsonProperty("BANK_RRN")
+	public void setBankRrn(String bankRrn) {
+	this.bankRrn = bankRrn;
+	}
 
-   public String getAMOUNT ()
-   {
-       return AMOUNT;
-   }
+	@JsonProperty("REM_ACC")
+	public String getRemAcc() {
+	return remAcc;
+	}
 
-   public void setAMOUNT (String AMOUNT)
-   {
-       this.AMOUNT = AMOUNT;
-   }
+	@JsonProperty("REM_ACC")
+	public void setRemAcc(String remAcc) {
+	this.remAcc = remAcc;
+	}
 
-   public String getMERCHANTNAME ()
-   {
-       return MERCHANTNAME;
-   }
+	@JsonProperty("MERCHANTNAME")
+	public String getMerchantname() {
+	return merchantname;
+	}
 
-   public void setMERCHANTNAME (String MERCHANTNAME)
-   {
-       this.MERCHANTNAME = MERCHANTNAME;
-   }
+	@JsonProperty("MERCHANTNAME")
+	public void setMerchantname(String merchantname) {
+	this.merchantname = merchantname;
+	}
 
-   public String getREM_ACC ()
-   {
-       return REM_ACC;
-   }
+	@JsonProperty("SUBMERCHANTID")
+	public String getSubmerchantid() {
+	return submerchantid;
+	}
 
-   public void setREM_ACC (String REM_ACC)
-   {
-       this.REM_ACC = REM_ACC;
-   }
+	@JsonProperty("SUBMERCHANTID")
+	public void setSubmerchantid(String submerchantid) {
+	this.submerchantid = submerchantid;
+	}
 
-   public String getUUID ()
-   {
-       return UUID;
-   }
+	@JsonProperty("SUBMERCHANTNAME")
+	public String getSubmerchantname() {
+	return submerchantname;
+	}
 
-   public void setUUID (String UUID)
-   {
-       this.UUID = UUID;
-   }
+	@JsonProperty("SUBMERCHANTNAME")
+	public void setSubmerchantname(String submerchantname) {
+	this.submerchantname = submerchantname;
+	}
 
-   public String getREMARK ()
-   {
-       return REMARK;
-   }
+	@JsonProperty("PAYERVA")
+	public String getPayerva() {
+	return payerva;
+	}
 
-   public void setREMARK (String REMARK)
-   {
-       this.REMARK = REMARK;
-   }
+	@JsonProperty("PAYERVA")
+	public void setPayerva(String payerva) {
+	this.payerva = payerva;
+	}
 
-   @Override
-   public String toString()
-   {
-       return "Record [RETAILER_CODE = "+RETAILER_CODE+", TRANSACTION_REF = "+TRANSACTION_REF+", REM_NAME = "+REM_NAME+", PAYERVA = "+PAYERVA+", REM_MOBILE = "+REM_MOBILE+", SUBMERCHANTNAME = "+SUBMERCHANTNAME+", SUBMERCHANTID = "+SUBMERCHANTID+", BEN_ACCOUNT = "+BEN_ACCOUNT+", BEN_BANK_IFSC = "+BEN_BANK_IFSC+", DATETIME = "+DATETIME+", AMOUNT = "+AMOUNT+", MERCHANTNAME = "+MERCHANTNAME+", REM_ACC = "+REM_ACC+", UUID = "+UUID+", REMARK = "+REMARK+"]";
-   }
+	@JsonProperty("REMARK")
+	public String getRemark() {
+	return remark;
+	}
+
+	@JsonProperty("REMARK")
+	public void setRemark(String remark) {
+	this.remark = remark;
+	}
+
+	@JsonProperty("UUID")
+	public String getUuid() {
+	return uuid;
+	}
+
+	@JsonProperty("UUID")
+	public void setUuid(String uuid) {
+	this.uuid = uuid;
+	}
+
+	@JsonAnyGetter
+	public Map<String, Object> getAdditionalProperties() {
+	return this.additionalProperties;
+	}
+
+	@JsonAnySetter
+	public void setAdditionalProperty(String name, Object value) {
+	this.additionalProperties.put(name, value);
+	}
+
+	@Override
+	public String toString() {
+		return "Record [benBankIfsc=" + benBankIfsc + ", responseCode=" + responseCode + ", retailerCode="
+				+ retailerCode + ", datetime=" + datetime + ", transactionRef=" + transactionRef + ", remName="
+				+ remName + ", status=" + status + ", remMobile=" + remMobile + ", benAccount=" + benAccount
+				+ ", amount=" + amount + ", bankRrn=" + bankRrn + ", remAcc=" + remAcc + ", merchantname="
+				+ merchantname + ", submerchantid=" + submerchantid + ", submerchantname=" + submerchantname
+				+ ", payerva=" + payerva + ", remark=" + remark + ", uuid=" + uuid + ", additionalProperties="
+				+ additionalProperties + "]";
+	}
 }
 			
 			
