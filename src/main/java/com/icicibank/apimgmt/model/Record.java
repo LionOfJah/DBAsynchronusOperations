@@ -94,8 +94,7 @@ public class Record implements Serializable
 	@Column(name="UUID")
 	private String uuid;
 	
-	@JsonIgnore
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	
 
 	@JsonProperty("BEN_BANK_IFSC")
 	public String getBenBankIfsc() {
@@ -277,15 +276,7 @@ public class Record implements Serializable
 	this.uuid = uuid;
 	}
 
-	@JsonAnyGetter
-	public Map<String, Object> getAdditionalProperties() {
-	return this.additionalProperties;
-	}
-
-	@JsonAnySetter
-	public void setAdditionalProperty(String name, Object value) {
-	this.additionalProperties.put(name, value);
-	}
+	
 
 	@Override
 	public String toString() {
@@ -294,8 +285,7 @@ public class Record implements Serializable
 				+ remName + ", status=" + status + ", remMobile=" + remMobile + ", benAccount=" + benAccount
 				+ ", amount=" + amount + ", bankRrn=" + bankRrn + ", remAcc=" + remAcc + ", merchantname="
 				+ merchantname + ", submerchantid=" + submerchantid + ", submerchantname=" + submerchantname
-				+ ", payerva=" + payerva + ", remark=" + remark + ", uuid=" + uuid + ", additionalProperties="
-				+ additionalProperties + "]";
+				+ ", payerva=" + payerva + ", remark=" + remark + ", uuid=" + uuid +  "]";
 	}
 }
 			
